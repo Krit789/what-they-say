@@ -64,14 +64,14 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="flex flex-row h-full w-full">
+      <div class="flex flex-row h-full w-full overflow-hidden">
         <div class="pt-2">
           <div class="flex flex-col bg-white/25 rounded-es-xl h-full w-8"></div>
         </div>
         <div class="flex flex-col grow">
           <div class="flex flex-row ml-2 items-center justify-start gap-2">
             <span class="text-[8px] pt-1"> ชื่อตัวและชื่อสกุล </span>
-            <span class="text-sm"> นาย จารุกิตติ์ ศรีพาเพลิน </span>
+            <span class="text-sm leading-none"> นาย จารุกิตติ์ ศรีพาเพลิน </span>
           </div>
           <div class="flex flex-row justify-start gap-2">
             <div class="w-10 h-9 ml-1 mt-2 bg-yellow-500/25 rounded-lg"></div>
@@ -131,13 +131,13 @@ onMounted(() => {
           </div>
         </div>
         <div
-          class="flex flex-col justify-end items-start text-xs mr-2 mb-1 leading-3 select-none pointer-events-none"
+          class="flex flex-col justify-end items-start mr-2 mb-1 leading-3 select-none pointer-events-none"
         >
           <img
             src="/alt_avatar.webp"
             class="sm:w-20 w-16 rounded-md"
           />
-          <span class="sm:text-[8px] text-[6px]">1111-11-11111111</span>
+          <span class="sm:text-[8px] text-[6px] w-16 overflow-hidden whitespace-nowrap">1111-11-11111111</span>
         </div>
       </div>
     </div>

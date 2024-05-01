@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'IBMPlexSans': ['IBM Plex Sans', 'sans-serif'],
+        'IBMPlexSans': ['IBM Plex Sans Thai', 'sans-serif'],
       },
     },
   },

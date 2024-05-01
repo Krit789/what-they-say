@@ -8,7 +8,8 @@ datasource db {
 }
 
 model messages {
-  id                  Int      @id @default(autoincrement()) @db.UnsignedInt
-  time                DateTime @default(now()) @db.Timestamp(0)
-  message             String   @db.MediumText
+  id             Int      @id @default(autoincrement()) @db.UnsignedInt
+  time           DateTime @default(now()) @db.Timestamp(0)
+  request_header String   @db.Text
+  message        String   @db.MediumText
 }

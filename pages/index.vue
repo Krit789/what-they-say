@@ -3,12 +3,13 @@ useHead({
   meta: [{ name: "format-detection", content: "telephone=no" }],
 });
 import type { Container } from "@tsparticles/engine";
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 
-const alreadySend = useCookie<boolean>(`hasSent-${config.public.hasSentHash}`) || false;
+const alreadySend =
+  useCookie<boolean>(`hasSent-${config.public.hasSentHash}`) || false;
 const message = ref("");
 const errMsg = ref("");
-const isSending = ref(false)
+const isSending = ref(false);
 const isLoaded = ref(false);
 
 async function sendMsg() {
@@ -16,18 +17,23 @@ async function sendMsg() {
     errMsg.value = "กรุณาใส่ข้อความ";
     return;
   }
-  isSending.value = true
+  isSending.value = true;
   await $fetch("/api/record_message", {
     method: "POST",
     body: {
       message: message.value,
     },
-  }).then(() => {
-    alreadySend.value = true;
-    isSending.value = false
-  }).catch(err => {
-    console.error(err)
-  });
+  })
+    .then(() => {
+      alreadySend.value = true;
+      isSending.value = false;
+    })
+    .catch((err) => {
+      isSending.value = false;
+      alreadySend.value = false;
+
+      console.log(err);
+    });
 }
 const options = {
   background: {
@@ -94,7 +100,8 @@ const onLoad = (container: Container) => {
           class="flex flex-col p-6 isolate aspect-video sm:w-96 w-[324px] rounded-xl bg-white/20 shadow-lg ring-1 ring-black/5 backdrop-blur-sm text-white"
         >
           <span class="flex flex-row justify-between select-none">
-            <span>อันนี้ผมไม่รู้ว่าใครส่งจริง ๆ นะ</span><span class="text-white/25 font-light">{{ message.length }}</span>
+            <span>อันนี้ผมไม่รู้ว่าใครส่งจริง ๆ นะ</span
+            ><span class="text-white/25 font-light">{{ message.length }}</span>
           </span>
           <textarea
             v-model="message"
@@ -103,15 +110,22 @@ const onLoad = (container: Container) => {
             rows="5"
           ></textarea>
           <button
-          :disabled="isSending"
+            :disabled="isSending"
             @click="sendMsg()"
             class="transition duration-200 bg-blue-600 p-2 text-white rounded-b-md hover:bg-blue-500 active:bg-blue-700 w-full border-white/20 border-t"
           >
             <span
               class="flex flex-row text-white justify-center gap-2 select-none"
             >
-              <img width="24" height="24" alt="" :src="isSending ? '/icons/hourglass_top.svg' : '/icons/send.svg'" />
-              <span>{{ isSending ? 'กำลังส่ง' : 'ส่ง'}}</span>
+              <img
+                width="24"
+                height="24"
+                alt=""
+                :src="
+                  isSending ? '/icons/hourglass_top.svg' : '/icons/send.svg'
+                "
+              />
+              <span>{{ isSending ? "กำลังส่ง" : "ส่ง" }}</span>
             </span>
           </button>
           <div class="h-6 flex flex-col">
@@ -150,13 +164,13 @@ const onLoad = (container: Container) => {
 }
 
 #tsparticles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    padding: 0;
-    margin: 0;
-    z-index: 0; /* if you use -1 you have to set to `"window"` the interactivity.detectsOn property */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 0; /* if you use -1 you have to set to `"window"` the interactivity.detectsOn property */
 }
 </style>

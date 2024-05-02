@@ -11,5 +11,6 @@ model messages {
   id             Int      @id @default(autoincrement()) @db.UnsignedInt
   time           DateTime @default(now()) @db.Timestamp(0)
   request_header String   @db.Text
+  geoip          String   @db.Text
   message        String   @db.MediumText
 }

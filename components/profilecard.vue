@@ -27,7 +27,6 @@ onMounted(() => {
     cardElem.value.classList.add('drop');
     cardElem.value.classList.remove('opacity-0');
     cardElem.value.classList.add('flex');
-    console.log(window)
 })
 </script>
 <template>

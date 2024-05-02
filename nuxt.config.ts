@@ -19,9 +19,13 @@ export default defineNuxtConfig({
       "IBM+Plex+Sans+Thai": true,
     },
   },
+  routeRules:{
+    '/monitor' : {ssr: false}
+  },
   runtimeConfig: {
     public: {
         hasSentHash: '', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
     },
+    secret: ''
 },
 });

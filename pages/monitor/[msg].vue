@@ -51,7 +51,7 @@ const inputElem = ref();
 const pageBG = ref();
 </script>
 <template>
-  <div class="page-bg" ref="pageBG"></div>
+  <div class="page-bg" ref="pageBG" style="background: url('/monitorbg.webp');"></div>
   <div class="flex flex-col justify-between gap-y-8 min-h-[99vh] h-full">
     <div
       class="flex flex-col gap-y-4 border border-white/25 isolate mt-32 bg-black/15 text-white backdrop-blur-lg max-w-screen-md mx-auto sm:w-96 w-11/12 h-full rounded-xl bg-white-300/30 shadow-lg ring-1 ring-black/5 p-4 mb-6"
@@ -85,7 +85,6 @@ body {
   z-index: -10;
   width: 100vw;
   height: 100vh;
-  background: url("/monitorbg.webp");
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;

@@ -58,6 +58,13 @@ const showMore = ref(false);
         >
           {{ showMore ? "Hide" : "Show More" }}
         </button>
+        <NuxtLink :to="`/monitor/${info.id}?key=${useRoute().query.key}`">
+          <button
+          class="bg-blue-400 ml-2 px-3 py-2 rounded-md text-white"
+          >
+          Screenshot
+        </button>
+      </NuxtLink>
       </div>
       <div class="flex" v-show="showMore">
         <pre class="bg-slate-100 px-4 py-2 rounded-md text-black">{{
